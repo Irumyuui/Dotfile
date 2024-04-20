@@ -1,18 +1,12 @@
-# starship
+# Enable starship
 Invoke-Expression (&starship init powershell)
-# $ENV:STARSHIP_CONFIG = "C:\Users\Ciel\.config\starship\pure-preset.toml"
 
 # Import-Module PSReadLine
-
-# Shows navigable menu of all options when hitting Tab
-# Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
-
-# Autocompletion for arrow keys
-# Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
-# Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
-
-# auto suggestions
-# Set-PSReadLineOption -PredictionSource History
+Import-Module posh-git
+Import-Module -Name Terminal-Icons
+Import-Module Az.Accounts
+Import-Module Az.Tools.Predictor
+Import-Module -Name CompletionPredictor
 
 Set-PSReadLineKeyHandler -Key "Ctrl+z" -Function Undo
 Set-PSReadLineKeyHandler -Key "Ctrl+d" -Function MenuComplete
@@ -27,6 +21,9 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 Set-PSReadLineOption -ShowToolTips
 Set-PSReadLineOption -PredictionSource History
+
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+Set-PSReadLineOption -PredictionViewStyle ListView
 
 #Set the color for Prediction (auto-suggestion)
 Set-PSReadLineOption -Colors @{
@@ -50,6 +47,5 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
 }
 
 # Alias
-Set-Alias -Name ls -Value eza
-Set-Alias -Name cat -Value bat
-
+# Set-Alias -Name ls -Value eza
+# Set-Alias -Name cat -Value bat
