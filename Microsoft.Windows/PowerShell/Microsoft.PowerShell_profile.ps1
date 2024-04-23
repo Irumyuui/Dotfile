@@ -312,6 +312,7 @@ Set-Alias -Name vim -Value nvim
 Set-Alias -Name grep -Value rg
 # Set-Alias -Name touch -Value New-Item
 Set-Alias -Name top -Value btm
+Set-Alias -Name j -Value z
 # Set-Alias -Name cat -Value bat
 
 #endregion Alias
