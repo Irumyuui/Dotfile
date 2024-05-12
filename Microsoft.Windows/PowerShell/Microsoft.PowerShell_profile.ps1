@@ -28,7 +28,7 @@ Set-PSReadLineOption -ShowToolTips
 # Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 Set-PSReadLineOption -PredictionViewStyle ListView
-Set-PSReadLineKeyHandler -Key Tab -Function Complete
+# Set-PSReadLineKeyHandler -Key Tab -Function Complete
 
 Set-PSReadLineOption -BellStyle None
 
