@@ -21,7 +21,8 @@ Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 # Shows navigable menu of all options when hitting Tab
-Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+# Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadLineKeyHandler -Chord Tab -Function MenuComplete
 
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 Set-PSReadLineOption -ShowToolTips
