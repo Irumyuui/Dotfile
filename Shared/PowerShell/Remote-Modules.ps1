@@ -1,0 +1,10 @@
+Install-Module -Name 7Zip4Powershell
+Install-Module -Name Az.Accounts
+Install-Module -Name Az.Tools.Predictor
+Install-Module -Name CompletionPredictor
+Install-Module -Name posh-git
+Install-Module -Name PSFzf
+Install-Module -Name PSReadLine
+Install-Module -Name PSScriptAnalyzer
+Install-Module -Name Terminal-Icons
+Install-Module -Name z
