@@ -93,25 +93,6 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
 Import-Module PSFzf
 Set-PsFzfOption -PsReadLineChordProvider 'Ctrl+f' -PsReadLineChordReverseHistory 'Ctrl+r'
 
-# Function
-function which ($command) {
-  Get-Command -Name $command -ErrorAction SilentlyContinue
-  | Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
-}
-
-function touch {
-  Param(
-    [Parameter(Mandatory = $true)]
-    [string]$Path
-  )
-  if (Test-Path -LiteralPath $Path) {
-    (Get-Item -Path $Path).LastWriteTime = Get-Date
-  }
-  else {
-    New-Item -Type File -Path $Path
-  }
-}
-
 Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
   param($wordToComplete, $commandAst, $cursorPosition)
   [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
@@ -207,6 +188,45 @@ Set-PSReadLineKeyHandler -Key Backspace `
 
 #endregion Smart Insert/Delete
 
+# Function
+function which ($command) {
+  Get-Command -Name $command -ErrorAction SilentlyContinue
+  | Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
+}
+
+function touch {
+  Param(
+    [Parameter(Mandatory = $true)]
+    [string]$Path
+  )
+  if (Test-Path -LiteralPath $Path) {
+    (Get-Item -Path $Path).LastWriteTime = Get-Date
+  }
+  else {
+    New-Item -Type File -Path $Path
+  }
+}
+
+function time {
+  Param(
+    [Parameter(Mandatory = $true)]
+    [string]$command,
+    [switch]$quiet = $false
+  )
+  $start = Get-Date
+  try {
+    if ( -not $quiet ) {
+      Invoke-Expression $command | Write-Host
+    }
+    else {
+      Invoke-Expression $command > $null
+    }
+  }
+  finally {
+    $(Get-Date) - $start
+  }
+}
+
 #region Alias
 
 Set-Alias -Name ll -Value eza
@@ -221,3 +241,6 @@ Set-Alias -Name j -Value z
 
 $env:RUSTUP_DIST_SERVER = 'https://rsproxy.cn'
 $env:RUSTUP_UPDATE_ROOT = 'https://rsproxy.cn/rustup'
+
+$env:GO111MODULE = "on"
+$env:GOPROXY = "https://mirrors.aliyun.com/goproxy/,direct"
