@@ -244,3 +244,5 @@ $env:RUSTUP_UPDATE_ROOT = 'https://rsproxy.cn/rustup'
 
 $env:GO111MODULE = "on"
 $env:GOPROXY = "https://mirrors.aliyun.com/goproxy/,direct"
+
+$env:FZF_DEFAULT_OPTS='--preview "bat --style=numbers --color=always --line-range :500 {}"'
