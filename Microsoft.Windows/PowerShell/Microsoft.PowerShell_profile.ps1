@@ -42,18 +42,18 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -BellStyle None
 
 #Set the color for Prediction (auto-suggestion)
-Set-PSReadLineOption -Colors @{
-  Command            = 'Green'
-  Number             = 'DarkBlue'
-  Member             = 'DarkBlue'
-  Operator           = 'DarkBlue'
-  Type               = 'DarkBlue'
-  Variable           = 'DarkGreen'
-  Parameter          = 'DarkGreen'
-  ContinuationPrompt = 'DarkBlue'
-  Default            = 'DarkBlue'
-  InlinePrediction   = 'DarkGray'
-}
+# Set-PSReadLineOption -Colors @{
+#   Command            = 'Green'
+#   Number             = 'DarkBlue'
+#   Member             = 'DarkBlue'
+#   Operator           = 'DarkBlue'
+#   Type               = 'DarkBlue'
+#   Variable           = 'DarkGreen'
+#   Parameter          = 'DarkGreen'
+#   ContinuationPrompt = 'DarkBlue'
+#   Default            = 'DarkBlue'
+#   InlinePrediction   = 'DarkGray'
+# }
 
 Set-PSReadLineOption -CommandValidationHandler {
   param([System.Management.Automation.Language.CommandAst]$CommandAst)
@@ -229,12 +229,12 @@ function time {
 
 #region Alias
 
-Set-Alias -Name ll -Value eza
-Set-Alias -Name vim -Value nvim
-Set-Alias -Name grep -Value rg
+Set-Alias -Name ll -Value eza               # eza
+Set-Alias -Name vim -Value nvim             # nvim  
+Set-Alias -Name grep -Value rg              # ripgrep
 # Set-Alias -Name touch -Value New-Item
-Set-Alias -Name top -Value btm
-Set-Alias -Name j -Value z
+Set-Alias -Name top -Value btm              # btm
+# Set-Alias -Name j -Value z
 # Set-Alias -Name cat -Value bat
 
 #endregion Alias
