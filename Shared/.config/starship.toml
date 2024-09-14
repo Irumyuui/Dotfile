@@ -93,9 +93,9 @@ symbol = " "
 symbol = " "
 
 [os]
-format = "on [($name )]($style)"
+format = "[$symbol]($style)"
 style = "bold blue"
-disabled = true
+disabled = false
 
 [os.symbols]
 Alpaquita = " "
