@@ -1,23 +1,58 @@
 # Enable UTF-8 encoding for PowerShell console
 $OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
-# Enable starship
+# if (Get-Command "fnm" -ErrorAction SilentlyContinue) {
+fnm env --use-on-cd --shell power-shell | Out-String | Invoke-Expression
+# }
+
+# # Enable starship
+# if (Get-Command "starship" -ErrorAction SilentlyContinue) {
 Invoke-Expression (&starship init powershell)
+# }
 
-#region Import modules
+# #region Import modules
 
-# Import-Module PSReadLine
+# # Import-Module PSReadLine
+# if (!(Get-InstalledModule -Name Terminal-Icons)) {
+#   Install-Module -Name Terminal-Icons -Repository PSGallery
+# }
 Import-Module -Name Terminal-Icons
+
+# if (!(Get-InstalledModule -Name z)) {
+#   Install-Module -Name z
+# }
 Import-Module -Name z
+
+# if (!(Get-InstalledModule -Name posh-git)) {
+#   Install-Module -Name posh-git
+# }
 Import-Module posh-git
 
+# if (!(Get-InstalledModule -Name Az.Accounts)) {
+#   Install-Module -Name Az.Accounts
+# }
 Import-Module Az.Accounts
+
+# if (!(Get-InstalledModule -Name Az.Tools.Predictor)) {
+#   Install-Module -Name Az.Tools.Predictor
+# }
 Import-Module Az.Tools.Predictor
+
+# if (!(Get-InstalledModule -Name CompletionPredictor)) {
+#   Install-Module -Name CompletionPredictor
+# }
 Import-Module -Name CompletionPredictor
 
-#f45873b3-b655-43a6-b217-97c00aa0db58 PowerToys CommandNotFound module
+# if (Get-InstalledModule -Name Microsoft.WinGet.CommandNotFound) {
 Import-Module -Name Microsoft.WinGet.CommandNotFound
-#f45873b3-b655-43a6-b217-97c00aa0db58
+# }
+# # Import-Module -Name scoop-completion
+# if (Get-InstalledModule -Name DockerCompletion) {
+Import-Module -Name DockerCompletion
+# }
+# if (Get-InstalledModule -Name WSLTabCompletion) {
+Import-Module -Name WSLTabCompletion
+# }
 
 #endregion Import modules
 
@@ -227,6 +262,8 @@ function time {
   }
 }
 
+function htop { btm --basic }
+
 #region Alias
 
 Set-Alias -Name ll -Value eza               # eza
@@ -237,6 +274,10 @@ Set-Alias -Name top -Value btm              # btm
 # Set-Alias -Name j -Value z
 # Set-Alias -Name cat -Value bat
 
+Set-Alias -Name lg -Value lazygit	    # lazygit
+
+Set-Alias -Name codei -Value code-insiders
+
 #endregion Alias
 
 $env:RUSTUP_DIST_SERVER = 'https://rsproxy.cn'
@@ -245,5 +286,5 @@ $env:RUSTUP_UPDATE_ROOT = 'https://rsproxy.cn/rustup'
 $env:GO111MODULE = "on"
 $env:GOPROXY = "https://mirrors.aliyun.com/goproxy/,direct"
 
-$env:FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.sass-cache,node_modules,build} --type f"
-$env:FZF_DEFAULT_OPTS='--preview "bat --style=numbers --color=always --line-range :500 {}"'
+$env:FZF_DEFAULT_COMMAND = "fd --exclude={.git,.idea,.sass-cache,node_modules,build} --type f"
+$env:FZF_DEFAULT_OPTS = '--preview "bat --style=numbers --color=always --line-range :500 {}"'
