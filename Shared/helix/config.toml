@@ -1,0 +1,63 @@
+# theme = "doom_acario_dark" # "papercolor-dark"
+# theme = "papercolor-dark"
+theme = "tokyonight_storm"
+# theme = "base16_default"
+
+[editor]
+mouse = true
+line-number = "relative"
+cursorline = true
+cursorcolumn = true
+auto-format = false
+true-color = true
+bufferline = "multiple"
+idle-timeout = 0
+color-modes = true
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control", "read-only-indicator"]
+center = ["file-modification-indicator", "file-name"]
+right = [
+  "diagnostics",
+  "selections",
+  "position",
+  "total-line-numbers",
+  "file-encoding",
+  "file-line-ending",
+  "file-type",
+]
+separator = "⸽"
+
+[editor.statusline.mode]
+normal = "NORMAL"
+insert = "INSERT"
+select = "SELECT"
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+auto-signature-help = true
+display-signature-help-docs = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.whitespace]
+render = "all"
+
+[editor.whitespace.characters]
+nbsp = "␣"
+newline = "⏎"
+space = "·"
+tab = "⇥"
+tabpad = "-"  # Tabs will look like "→···" (depending on tab width)
+
+[editor.indent-guides]
+render = true
+character = "║" # Some characters that work well: "▏", "╎", "┆", "┊", "⸽"
+skip-levels = 1
+
+[editor.soft-wrap]
+enable = true
